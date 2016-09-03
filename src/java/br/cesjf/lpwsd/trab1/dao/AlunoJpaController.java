@@ -55,7 +55,10 @@ public class AlunoJpaController implements Serializable {
             }
         }
     }
-
+    public void criar(String nome, String grupo){
+         EntityManager em = emf.createEntityManager();
+         em.createQuery("INSERT into Candidato (nome, grupo) VALUES ('"+ nome + "','"+ nome + "')");
+    }
     public void edit(Aluno aluno) throws NonexistentEntityException, RollbackFailureException, Exception {
         EntityManager em = null;
         try {
