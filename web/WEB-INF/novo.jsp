@@ -19,11 +19,6 @@
                 </label>
             </div>
             <div>
-                <label>Nota:
-                     <input type="text" name="nota" />
-                </label>
-            </div>
-            <div>
                 <input type="submit" />
             </div>
         </form>

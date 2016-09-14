@@ -4,6 +4,7 @@ import br.cesjf.lpwsd.trab1.Aluno;
 import br.cesjf.lpwsd.trab1.dao.AlunoJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
@@ -31,7 +32,11 @@ public class AlunoController extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/novo.jsp").forward(request, response);
         }
         if (request.getRequestURI().contains("listar-alunos.html")) {
-            request.getRequestDispatcher("/WEB-INF/listar-alunos.jsp").forward(request, response);
+            AlunoJpaController dao = new AlunoJpaController(ut, emf);
+            List<Aluno> aluno = dao.findAlunoEntities();
+            
+            request.setAttribute("aluno", aluno);
+            request.getRequestDispatcher("/WEB-INF/listar-alunos.jsp").forward(request, response);   
         }
     }
 
@@ -41,8 +46,9 @@ public class AlunoController extends HttpServlet {
         if (request.getRequestURI().contains("novo.html")) {
             Aluno aluno = new Aluno();
             String nome = request.getParameter("nome");
-            String grupo = request.getParameter("grupo");
-            String nota = request.getParameter("nota");
+            int grupo =  Integer.parseInt(request.getParameter("grupo"));
+            aluno.setNome(nome);
+            aluno.setGrupo(grupo);
             AlunoJpaController dao = new AlunoJpaController(ut, emf);
             try {
                 dao.create(aluno);
