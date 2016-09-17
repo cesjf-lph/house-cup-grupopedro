@@ -6,17 +6,66 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Listar alunos</title>
+        <style>
+            #menu{
+                background-color: rgb(240, 240, 240);
+                border: 1px solid rgb(217, 217, 217);
+                height: 30px;
+            }
+            #menu div{
+                padding: 5px;
+                border-right: 1px solid rgb(217, 217, 217);
+                float: left;
+            }
+            #menu div:hover{
+                background-color: rgb(110, 165, 0);
+                color: white;
+            }
+            #menu .ativo{
+                background-color: rgb(110, 165, 0);
+                color: white;
+            }
+            #menu .ativo a{
+                color: white;
+            }
+            #menu div a{
+                color: black;
+            }
+            #menu a{
+                text-decoration: none;
+            }
+            lista-topo {
+                width: 100%;
+                margin: 20px;
+                text-align: center;
+                font-weight: bold;
+                font-size: 18pt;
+            }
+            .lista-grupo {
+                float: left;
+                border: 1px solid #CCC;
+                margin: 5px;
+            }
+            .lista-grupo tr:first-child td{
+                text-align: center;
+            }
+        </style>
     </head>
     <body>
-        <a href="http://localhost:8080/house-cup-grupopedro/novo.html">Novo Aluno</a>
-        <h1>Listar Alunos</h1>
-        <table>
+        <div id="menu">
+            <div><a href="http://localhost:8080/house-cup-grupopedro/novo.html">NOVO ALUNO</a></div>
+            <div class="ativo"><a href="#">LISTAR GRUPOS</a></div>
+        </div>
+        <div class="lista-topo">Lista de Grupos</div>
+        <table class="lista-grupo">
             <thead>
-                <tr>Grupo 1</tr>
                 <tr>
-                    <th>aluno</th>
-                    <th>grupo</th>
-                    <th>nota</th>                
+                    <td>Grupo 1</td>
+                </tr>
+                <tr>
+                    <td>aluno</td>
+                    <td>grupo</td>
+                    <td>nota</td>                
                 </tr>
             </thead>
             <tbody>
@@ -31,13 +80,15 @@
                 </c:forEach>
             </tbody>
         </table>
-         <table>
+         <table class="lista-grupo">
             <thead>
-                <tr>Grupo 2</tr>
+                 <tr>
+                    <td>Grupo 2</td>
+                </tr>
                 <tr>
-                    <th>aluno</th>
-                    <th>grupo</th>
-                    <th>nota</th>                
+                    <td>aluno</td>
+                    <td>grupo</td>
+                    <td>nota</td>                
                 </tr>
             </thead>
             <tbody>
@@ -52,13 +103,15 @@
                 </c:forEach>
             </tbody>
         </table>
-         <table>
+         <table class="lista-grupo">
             <thead>
-                    <tr>Grupo 3</tr>
+                <tr>
+                    <td>Grupo 3</td>
+                </tr>
                     <tr>
-                        <th>aluno</th>
-                        <th>grupo</th>
-                        <th>nota</th>                
+                        <td>aluno</td>
+                        <td>grupo</td>
+                        <td>nota</td>                
                     </tr>
             </thead>
             <tbody>
@@ -73,16 +126,18 @@
                 </c:forEach>
             </tbody>
         </table>
-         <table>
+         <table class="lista-grupo">
             <thead>
+                 <tr>
+                    <td>Grupo 4</td>
+                </tr>
                 <tr>
-                    <th>aluno</th>
-                    <th>grupo</th>
-                    <th>nota</th>                
+                    <td>aluno</td>
+                    <td>grupo</td>
+                    <td>nota</td>                
                 </tr>
             </thead>
-            <tbody>
-                <tr>Grupo 4</tr>
+            <tbody>                
                 <c:forEach items="${aluno}" var="aluno">    
                     <c:if test="${aluno.grupo == 4}">
                         <tr>
