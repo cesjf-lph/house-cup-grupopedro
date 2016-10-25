@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.UserTransaction;
 
-@WebServlet(name = "AlunoController", urlPatterns = {"/AlunoController", "/novo.html", "/listar-alunos.html"})
+@WebServlet(name = "AlunoController", urlPatterns = {"/AlunoController", "/novo.html", "/listar-alunos.html", "/aluno.html"})
 public class AlunoController extends HttpServlet {
 
     @PersistenceUnit(unitName = "Trab1PU")
@@ -37,6 +37,15 @@ public class AlunoController extends HttpServlet {
             
             request.setAttribute("aluno", aluno);
             request.getRequestDispatcher("/WEB-INF/listar-alunos.jsp").forward(request, response);   
+        }
+        if (request.getRequestURI().contains("aluno.html")) {
+            Long id = Long.parseLong(request.getParameter("id"));
+            request.setAttribute("idAluno", id);
+              // AlunoJpaController dao = new AlunoJpaController(ut, emf);
+              // dao.findAluno(id);
+              // response.sendRedirect("listar-alunos.html");
+
+                request.getRequestDispatcher("/WEB-INF/aluno.jsp").forward(request, response);            
         }
     }
 
@@ -58,7 +67,7 @@ public class AlunoController extends HttpServlet {
                 Logger.getLogger(AlunoController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
+        
     }
 
 }

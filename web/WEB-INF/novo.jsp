@@ -8,7 +8,8 @@
             #menu{
                 background-color: rgb(240, 240, 240);
                 border: 1px solid rgb(217, 217, 217);
-                height: 30px;
+                display: inline-block;
+                width: 100%;
             }
             #menu div{
                 padding: 5px;
