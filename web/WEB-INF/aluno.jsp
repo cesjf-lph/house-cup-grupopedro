@@ -5,7 +5,20 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <body>
-        <h1>Hello World! ${idAluno}</h1>
-    </body>
+    <form method="post">
+         <input type="hidden" name="id_aluno" value="${idAluno}" />
+        <div>
+            <label>id professor:
+                <input type="text" name="id_professor" />
+            </label>
+        </div>
+        <div>
+            <label>nota:
+                <input type="text" name="nota" />
+            </label>
+        </div>
+        <div>
+            <input type="submit" />
+        </div>
+    </form>
 </html>

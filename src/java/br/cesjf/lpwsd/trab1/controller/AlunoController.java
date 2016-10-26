@@ -1,7 +1,9 @@
 package br.cesjf.lpwsd.trab1.controller;
 
 import br.cesjf.lpwsd.trab1.Aluno;
+import br.cesjf.lpwsd.trab1.Ocorrencia;
 import br.cesjf.lpwsd.trab1.dao.AlunoJpaController;
+import br.cesjf.lpwsd.trab1.dao.OcorrenciaJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -61,6 +63,25 @@ public class AlunoController extends HttpServlet {
             AlunoJpaController dao = new AlunoJpaController(ut, emf);
             try {
                 dao.create(aluno);
+                response.sendRedirect("listar-alunos.html");
+            } catch (Exception ex) {
+                response.sendRedirect("listar-alunos.html");
+                Logger.getLogger(AlunoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (request.getRequestURI().contains("aluno.html")) {
+            Ocorrencia ocorrencia = new Ocorrencia();
+            int id_aluno =  Integer.parseInt(request.getParameter("id_aluno"));
+            int id_professor =  Integer.parseInt(request.getParameter("id_professor"));
+            float nota = Float.parseFloat(request.getParameter("nota"));
+            
+            ocorrencia.setId_aluno(id_aluno);
+            ocorrencia.setId_professor(id_professor);
+            ocorrencia.setNota(nota);
+            
+            OcorrenciaJpaController dao2 = new OcorrenciaJpaController(ut, emf);
+            try {
+               dao2.create(ocorrencia);
                 response.sendRedirect("listar-alunos.html");
             } catch (Exception ex) {
                 response.sendRedirect("listar-alunos.html");

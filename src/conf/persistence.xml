@@ -3,6 +3,7 @@
   <persistence-unit name="Trab1PU" transaction-type="JTA">
     <jta-data-source>jdbc/sample</jta-data-source>
     <class>br.cesjf.lpwsd.trab1.Aluno</class>
+    <class>br.cesjf.lpwsd.trab1.Ocorrencia</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <shared-cache-mode>ALL</shared-cache-mode>
     <properties>
