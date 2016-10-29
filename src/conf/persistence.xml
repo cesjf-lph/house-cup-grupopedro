@@ -4,6 +4,7 @@
     <jta-data-source>jdbc/sample</jta-data-source>
     <class>br.cesjf.lpwsd.trab1.Aluno</class>
     <class>br.cesjf.lpwsd.trab1.Ocorrencia</class>
+    <class>br.cesjf.lpwsd.trab1.Professor</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <shared-cache-mode>ALL</shared-cache-mode>
     <properties>
