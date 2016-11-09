@@ -41,13 +41,17 @@ public class AlunoController extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/listar-alunos.jsp").forward(request, response);   
         }
         if (request.getRequestURI().contains("aluno.html")) {
-            Long id = Long.parseLong(request.getParameter("id"));
-            request.setAttribute("idAluno", id);
+              Long id = Long.parseLong(request.getParameter("id"));
+              request.setAttribute("idAluno", id);
               // AlunoJpaController dao = new AlunoJpaController(ut, emf);
               // dao.findAluno(id);
               // response.sendRedirect("listar-alunos.html");
-
-                request.getRequestDispatcher("/WEB-INF/aluno.jsp").forward(request, response);            
+              
+            OcorrenciaJpaController dao3 = new OcorrenciaJpaController(ut, emf);
+            List<Ocorrencia> ocorrencia = dao3.findOcorrenciaEntities();
+            request.setAttribute("ocorrencia", ocorrencia);
+              
+            request.getRequestDispatcher("/WEB-INF/aluno.jsp").forward(request, response);              
         }
     }
 
