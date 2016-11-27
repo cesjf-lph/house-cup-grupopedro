@@ -18,8 +18,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.UserTransaction;
+import org.apache.jasper.tagplugins.jstl.ForEach;
 
-@WebServlet(name = "AlunoController", urlPatterns = {"/AlunoController", "/novo.html", "/listar-alunos.html", "/aluno.html"})
+@WebServlet(name = "AlunoController", urlPatterns = {"/AlunoController", "/novo.html", "/listar-alunos.html","/lista-tudo.html", "/aluno.html"})
 public class AlunoController extends HttpServlet {
 
     @PersistenceUnit(unitName = "Trab1PU")
@@ -37,7 +38,26 @@ public class AlunoController extends HttpServlet {
             AlunoJpaController dao = new AlunoJpaController(ut, emf);
             List<Aluno> aluno = dao.findAlunoEntities();
             
+            OcorrenciaJpaController dao3 = new OcorrenciaJpaController(ut, emf);
+            List<Ocorrencia> ocorrencia = dao3.findOcorrenciaEntities();
+
+            //System.out.println(ocorrencia);
+            //System.out.println(aluno);
+            float[] grupo;
+            grupo = new float[100];
+            for (Aluno a : aluno) {
+                for (Ocorrencia o : ocorrencia) {
+                    if(o.getId_aluno() == a.getId()){
+                        grupo[a.getGrupo()] += o.getNota();
+                        //System.out.println(grupo[a.getGrupo()]);
+                    }
+                }
+            }
+            System.out.println(grupo[7]);
+            System.out.println(grupo[6]);
+            request.setAttribute("ocorrencia", ocorrencia);
             request.setAttribute("aluno", aluno);
+            request.setAttribute("grupo", grupo);
             request.getRequestDispatcher("/WEB-INF/listar-alunos.jsp").forward(request, response);   
         }
         if (request.getRequestURI().contains("aluno.html")) {
@@ -53,6 +73,14 @@ public class AlunoController extends HttpServlet {
               
             request.getRequestDispatcher("/WEB-INF/aluno.jsp").forward(request, response);              
         }
+        if(request.getRequestURI().contains("lista-tudo.html")) {
+            OcorrenciaJpaController daoOcorrecia = new OcorrenciaJpaController(ut, emf);
+            List<Object[]> somanotas = daoOcorrecia.getListaTudo();
+            
+            request.setAttribute("somanotas", somanotas);
+            request.getRequestDispatcher("/WEB-INF/lista-tudo.jsp").forward(request, response);              
+            
+        }
     }
 
     @Override
@@ -65,6 +93,7 @@ public class AlunoController extends HttpServlet {
             aluno.setNome(nome);
             aluno.setGrupo(grupo);
             AlunoJpaController dao = new AlunoJpaController(ut, emf);
+            
             try {
                 dao.create(aluno);
                 response.sendRedirect("listar-alunos.html");

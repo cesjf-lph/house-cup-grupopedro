@@ -27,17 +27,19 @@
     <table>
         <tr>
             <td>Data</td>
+            <td>aluno</td>
             <td>Professor</td>
-            <td>Aluno</td>
-            <td>id aluno</td>
+            <td>Nota</td>
         </tr>
         <c:forEach items="${ocorrencia}" var="ocorrencia">
+            <c:if test="${ocorrencia.id_aluno == idAluno}">
                 <tr>
                     <td>${ocorrencia.data_ocorrencia}</td>
                     <td>${ocorrencia.id_aluno}</td>
+                    <td>${ocorrencia.id_professor}</td>
                     <td>${ocorrencia.nota}</td>
-                    <td>${idAluno}</td>
                 </tr>
+            </c:if>
         </c:forEach>
     </table>
         

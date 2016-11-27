@@ -83,12 +83,24 @@
                 <td>Grupo</td>
                 <td>Nota</td>                
             </tr>
+            <c
             <c:forEach items="${aluno}" var="aluno">
                  <c:if test="${aluno.grupo == 1}">
                     <tr class="lista-grupo-aluno" onclick="window.location='http://localhost:8080/house-cup-grupopedro/aluno.html?id=${aluno.id}'">
                         <td>${aluno.nome}</td>
                         <td>${aluno.grupo}</td>
-                        <td>${aluno.nota}</td>                                 
+                        <td>                           
+                            
+                            <c:forEach items="${ocorrencia}" var="ocorrencia">
+                                <c:if test="${ocorrencia.id_aluno == aluno.id}">
+                                    
+                                      ${ocorrencia.nota}
+                                    
+                                </c:if>
+                            </c:forEach>
+                            
+                            
+                        </td>                                 
                     </tr>
                 </c:if>
             </c:forEach>
@@ -150,6 +162,26 @@
                 </c:if>
             </c:forEach>
         </table>
+        
+        
+        <table class="lista-grupo" cellspacing="0" cellpadding='0'>
+            <tr>
+               <td colspan="5">NOtas</td>
+            </tr>
+            <tr>
+               <td>Grupo</td>
+               <td>Nota</td>                
+            </tr>
+           
+            
+            <c:forEach items="${grupo}" var="aluno">
+                   <tr class="lista-grupo-aluno" onclick="window.location='http://localhost:8080/house-cup-grupopedro/aluno.html?id=${aluno.id}'">
+                      <td>${aluno.nome}</td>
+                      <td>${aluno.grupo}</td>                                
+                    </tr>
+            </c:forEach>
+        </table>
+        
     </body>
    
 </html>
