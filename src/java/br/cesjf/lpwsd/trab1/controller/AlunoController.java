@@ -41,23 +41,9 @@ public class AlunoController extends HttpServlet {
             OcorrenciaJpaController dao3 = new OcorrenciaJpaController(ut, emf);
             List<Ocorrencia> ocorrencia = dao3.findOcorrenciaEntities();
 
-            //System.out.println(ocorrencia);
-            //System.out.println(aluno);
-            float[] grupo;
-            grupo = new float[100];
-            for (Aluno a : aluno) {
-                for (Ocorrencia o : ocorrencia) {
-                    if(o.getId_aluno() == a.getId()){
-                        grupo[a.getGrupo()] += o.getNota();
-                        //System.out.println(grupo[a.getGrupo()]);
-                    }
-                }
-            }
-            System.out.println(grupo[7]);
-            System.out.println(grupo[6]);
+
             request.setAttribute("ocorrencia", ocorrencia);
             request.setAttribute("aluno", aluno);
-            request.setAttribute("grupo", grupo);
             request.getRequestDispatcher("/WEB-INF/listar-alunos.jsp").forward(request, response);   
         }
         if (request.getRequestURI().contains("aluno.html")) {

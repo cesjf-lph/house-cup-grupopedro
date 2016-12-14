@@ -55,7 +55,8 @@
         
         <div id="menu">
             <div class="ativo"><a href="#">NOVO ALUNO</a></div>
-            <div><a href="http://localhost:8080/house-cup-grupopedro/listar-alunos.html">LISTAR GRUPOS</a></div>
+            <div><a href="listar-alunos.html">LISTAR GRUPOS</a></div>
+            <div><a href="lista-tudo.html">LISTAR TUDO</a></div>
         </div>
         <div id="novo-aluno">
             <div class='novo-aluno-topo'>Novo Aluno</div>

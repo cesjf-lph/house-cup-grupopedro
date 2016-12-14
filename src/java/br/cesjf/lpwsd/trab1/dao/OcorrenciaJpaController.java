@@ -1,4 +1,3 @@
-
 package br.cesjf.lpwsd.trab1.dao;
 
 import br.cesjf.lpwsd.trab1.Ocorrencia;

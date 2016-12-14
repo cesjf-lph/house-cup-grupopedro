@@ -70,38 +70,25 @@
     </head>
     <body>
         <div id="menu">
-            <div><a href="http://localhost:8080/house-cup-grupopedro/novo.html">NOVO ALUNO</a></div>
+            <div><a href="novo.html">NOVO ALUNO</a></div>
             <div class="ativo"><a href="#">LISTAR GRUPOS</a></div>
+            <div><a href="lista-tudo.html">LISTAR TUDO</a></div>
         </div>
         <div class="lista-topo">Lista de Grupos</div>
-        <table class="lista-grupo" cellspacing="0" cellpadding='0'>
+         <table class="lista-grupo" cellspacing="0" cellpadding='0'>
             <tr>
-                <td colspan="5">Grupo 1</td>
+               <td colspan="5">Grupo 1</td>
             </tr>
             <tr>
-                <td>Aluno</td>
-                <td>Grupo</td>
-                <td>Nota</td>                
+               <td>Aluno</td>
+               <td>Grupo</td>         
             </tr>
-            <c
             <c:forEach items="${aluno}" var="aluno">
-                 <c:if test="${aluno.grupo == 1}">
-                    <tr class="lista-grupo-aluno" onclick="window.location='http://localhost:8080/house-cup-grupopedro/aluno.html?id=${aluno.id}'">
-                        <td>${aluno.nome}</td>
-                        <td>${aluno.grupo}</td>
-                        <td>                           
-                            
-                            <c:forEach items="${ocorrencia}" var="ocorrencia">
-                                <c:if test="${ocorrencia.id_aluno == aluno.id}">
-                                    
-                                      ${ocorrencia.nota}
-                                    
-                                </c:if>
-                            </c:forEach>
-                            
-                            
-                        </td>                                 
-                    </tr>
+                <c:if test="${aluno.grupo == 1}">
+                   <tr class="lista-grupo-aluno" onclick="window.location='aluno.html?id=${aluno.id}'">
+                       <td>${aluno.nome}</td>
+                       <td>${aluno.grupo}</td>                                
+                   </tr>
                 </c:if>
             </c:forEach>
         </table>
@@ -111,15 +98,13 @@
             </tr>
             <tr>
                <td>Aluno</td>
-               <td>Grupo</td>
-               <td>Nota</td>                
+               <td>Grupo</td>         
             </tr>
             <c:forEach items="${aluno}" var="aluno">
                 <c:if test="${aluno.grupo == 2}">
-                   <tr class="lista-grupo-aluno" onclick="window.location='http://localhost:8080/house-cup-grupopedro/aluno.html?id=${aluno.id}'">
+                   <tr class="lista-grupo-aluno" onclick="window.location='aluno.html?id=${aluno.id}'">
                        <td>${aluno.nome}</td>
-                       <td>${aluno.grupo}</td>
-                       <td>${aluno.nota}</td>                                 
+                       <td>${aluno.grupo}</td>                                
                    </tr>
                 </c:if>
             </c:forEach>
@@ -130,15 +115,13 @@
             </tr>
                 <tr>
                     <td>Aluno</td>
-                    <td>Grupo</td>
-                    <td>Nota</td>                
+                    <td>Grupo</td>               
                 </tr>
             <c:forEach items="${aluno}" var="aluno">
                 <c:if test="${aluno.grupo == 3}">
-                    <tr class="lista-grupo-aluno" onclick="window.location='http://localhost:8080/house-cup-grupopedro/aluno.html?id=${aluno.id}'">
+                    <tr class="lista-grupo-aluno" onclick="window.location='aluno.html?id=${aluno.id}'">
                         <td>${aluno.nome}</td>
-                        <td>${aluno.grupo}</td>
-                        <td>${aluno.nota}</td>                                 
+                        <td>${aluno.grupo}</td>                             
                     </tr>
                 </c:if>
             </c:forEach>
@@ -149,36 +132,15 @@
             </tr>
             <tr>
                <td>Aluno</td>
-               <td>Grupo</td>
-               <td>Nota</td>                
+               <td>Grupo</td>              
             </tr>             
             <c:forEach items="${aluno}" var="aluno">    
                 <c:if test="${aluno.grupo == 4}">
-                   <tr class="lista-grupo-aluno" onclick="window.location='http://localhost:8080/house-cup-grupopedro/aluno.html?id=${aluno.id}'">
+                   <tr class="lista-grupo-aluno" onclick="window.location='aluno.html?id=${aluno.id}'">
                       <td>${aluno.nome}</td>
-                      <td>${aluno.grupo}</td>
-                      <td>${aluno.nota}</td>                                 
+                      <td>${aluno.grupo}</td>                      
                     </tr>
                 </c:if>
-            </c:forEach>
-        </table>
-        
-        
-        <table class="lista-grupo" cellspacing="0" cellpadding='0'>
-            <tr>
-               <td colspan="5">NOtas</td>
-            </tr>
-            <tr>
-               <td>Grupo</td>
-               <td>Nota</td>                
-            </tr>
-           
-            
-            <c:forEach items="${grupo}" var="aluno">
-                   <tr class="lista-grupo-aluno" onclick="window.location='http://localhost:8080/house-cup-grupopedro/aluno.html?id=${aluno.id}'">
-                      <td>${aluno.nome}</td>
-                      <td>${aluno.grupo}</td>                                
-                    </tr>
             </c:forEach>
         </table>
         
